@@ -19,7 +19,7 @@ function bubbleSort(dataset, property, order) {
             }
         }
     }
-    console.log('Триває сортування данних')
+    console.log('Триває сортування данних');
     return dataset;
 }
 
