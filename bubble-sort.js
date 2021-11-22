@@ -1,28 +1,31 @@
 const data = require('./prize.json');
 
 function bubbleSort(dataset, property, order) {
-    for (let i = 0; i < dataset.length; i++) {
-        for (let j = 0; j < dataset.length; j++) {
+    const dataCopy = [...dataset];
+
+    for (let i = 0; i < dataCopy.length; i++) {
+        for (let j = 0; j < dataCopy.length; j++) {
+            let current = dataCopy[j];
+            let next = dataCopy[j + 1];
+            let nextIndex = j + 1;
+
             if (order === 'asc') {
-                if ((j + 1 < dataset.length) && (dataset[j + 1][property] > dataset[j][property])) {
-                    let tmp = dataset[j];
-                    dataset[j] = dataset[j + 1];
-                    dataset[j + 1] = tmp;
+                if ((nextIndex < dataCopy.length) && (next[property] > current[property])) {
+                    let tmp = dataCopy[j];
+                    dataCopy[j] = dataCopy[j + 1];
+                    dataCopy[j + 1] = tmp;
                 }
             }
             if (order === 'desc') {
-                if ((j + 1 < dataset.length) && (dataset[j + 1][property] < dataset[j][property])) {
-                    let tmp = dataset[j];
-                    dataset[j] = dataset[j + 1];
-                    dataset[j + 1] = tmp;
+                if ((nextIndex < dataCopy.length) && (next[property] < current[property])) {
+                    let tmp = dataCopy[j];
+                    dataCopy[j] = dataCopy[j + 1];
+                    dataCopy[j + 1] = tmp;
                 }
             }
         }
     }
-    console.log('Триває сортування данних');
-    return dataset;
+    return dataCopy;
 }
-
-const result = bubbleSort(data.prizes, 'year', 'asc');
 
 module.exports = bubbleSort;

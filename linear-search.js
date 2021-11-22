@@ -16,6 +16,4 @@ function linearSearch (dataset, property, query) {
     }
 }
 
-const result = linearSearch(data.prizes, 'year', '2019');
-
 module.exports = linearSearch;
